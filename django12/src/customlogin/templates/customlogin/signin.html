@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	{% if error %}
+		<p> {{error}} </p>
+	{% endif %}
+	
+	<form action="" method="POST">
+	{% csrf_token %}
+	<input type="hidden" name="nexturl" value="{{nexturl}}"> <!-- 로그인 후 이동할 페이지 주소 -->
+	<table>
+		{{f.as_table}}
+	</table>
+	<input type="submit" value="로그인">
+	</form>
+	<a href="{% url 'login:signup' %}">회원가입</a>
+	<br>
+	<a href="{% url 'social:begin' 'google-plus' %}">구글로 로그인하기</a> <!-- social은 앞서 name space에 지정한 별칭 -->
+	
+</body>
+</html>

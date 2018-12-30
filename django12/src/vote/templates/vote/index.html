@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+북마크 상세보기
+{% endblock %}
+
+{% block content %}
+
+	<h1>투표 어플리케이션</h1>
+	<p>투표할 질문을 선택하세요</p>
+	<table>
+		<tr>
+			<th>질문번호</th>
+			<th>제목</th>
+			<th>생성일</th>
+		</tr>
+		{% for q in a %}
+		<tr>
+		
+			<td>{{ q.id }}</td>
+			<td><a href="{% url 'vote:detail' q.id %}">{{q.name}}</a></td>
+			<td>{{q.date}}</td>
+		
+		</tr>
+		{% endfor %}
+	</table>
+	
+	<a href="{% url 'vote:qregister' %}">설문조사 등록</a>
+	<a href="{% url 'vote:cregister' %}">답변 등록</a>
+
+{% endblock %}

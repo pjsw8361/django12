@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+북마크 상세보기
+{% endblock %}
+
+{% block content %}
+
+	<h1>{{q.name}} 투표결과</h1>
+	<ul>
+		{% for c in q.choice_set.all %} {# question과 연결된 choice들을 모두 가져와라 #}
+			<li>{{c.name}} - {{c.votes}} 표</li>
+		{% endfor %}
+	</ul>
+	<a href="{% url 'vote:index' %}">메인페이지로 돌아가기</a>	
+{% endblock %}

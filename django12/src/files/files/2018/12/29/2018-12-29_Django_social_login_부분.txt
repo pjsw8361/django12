@@ -1,0 +1,10 @@
+1. social-auth-app-django와 pillow를 cmd창에서 설치
+2. settings.py에서 Installed apps와 authentication_backends 관련 사항 추가
+3. console.developers.google.com 접속해서 프로젝트 생성 -> 라이브러리 -> google+ 검색 -> google+ api 사용설정 -> 사용자 인증 정보(OAuth 동의화면 탭에서 app name 지정, 사용자 인증정보 탭의 oauth 클라이언트 ID)
+*리디렉션 -> http://127.0.0.1:8000/auth/complete/google-oauth2/
+4.구글에서 받은 client id, key값을 settings.py에 입력
+5.migrate를 통해 DB에 저장
+6.url 생성
+7.템플릿에 링크 지정
+8.settings.py에 template부분 추가
+9.settings.py에 redirect_url 추가

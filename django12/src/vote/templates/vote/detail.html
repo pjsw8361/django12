@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+북마크 상세보기
+{% endblock %}
+
+{% block content %}
+	<h1>{{q.name}}</h1>
+	<p>{{q.date}}</p>
+	<form action="{%url 'vote:vote' %}" method="POST">
+		{% csrf_token %} <!-- 다른 웹사이트에서 데이터를 보낼 때 웹서버가 그것을 차단 -->
+		<!--  q.choice_set: Question 객체 a에 연결된 choidce 객체를 대상으로 a11(),get(),filter() 이용하여 출력할 수 있음-->
+		{% for c in q.choice_set.all %}
+			<input type="radio" name="b" value="{{c.id}}">
+			<label> {{c.name}} </label>
+			<a href="{% url 'vote:cupdate' c.id %}">수정</a>
+			<a href="{% url 'vote:cdelete' c.id %}">삭제</a>
+			<br>	
+		{% endfor %}
+		<input type = "submit" value="투표하기">
+		
+	</form>
+	<a href="{% url 'vote:qupdate' q.id %}">수정</a>
+	<a href="{% url 'vote:qdelete' q.id %}">삭제</a>
+	<br>
+	<a href="{% url 'vote:index' %}">돌아가기</a>
+{% endblock %}

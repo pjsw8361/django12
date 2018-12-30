@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+글쓰기
+{% endblock %}
+{% block content %}
+<!-- enctype="multipart/form-data -> 해당 폼으로 파일데이터를 서버에 전달할 수 있도록 설정 -->
+<form action="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+	<table>
+		{{form.as_table}}
+	</table>
+	<input type="submit" value="글쓰기">
+</form>
+{% endblock %}
